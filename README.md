@@ -8,6 +8,15 @@
 You’ll need a Kubernetes cluster to run against. You can use [KIND](https://sigs.k8s.io/kind) to get a local cluster for testing, or run against a remote cluster.
 **Note:** Your controller will automatically use the current context in your kubeconfig file (i.e. whatever cluster `kubectl cluster-info` shows).
 
+#### Notes
+
+The API domain used is `tutorial.kubebuilder.io`.
+
+The `CronJob` resource was initialised using `kubebuilder` like so:
+```sh
+kubebuilder create api --group batch --version v1 --kind CronJob
+```
+
 ### Running on the cluster
 1. Install Instances of Custom Resources:
 
