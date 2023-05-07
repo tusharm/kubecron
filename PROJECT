@@ -7,4 +7,14 @@ layout:
 - go.kubebuilder.io/v4
 projectName: kubecron
 repo: tutorial.kubebuilder.io/kubecron
+resources:
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: tutorial.kubebuilder.io
+  group: batch
+  kind: CronJob
+  path: tutorial.kubebuilder.io/kubecron/api/v1
+  version: v1
 version: "3"
