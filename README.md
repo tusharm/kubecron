@@ -17,6 +17,11 @@ The `CronJob` resource was initialised using `kubebuilder` like so:
 kubebuilder create api --group batch --version v1 --kind CronJob
 ```
 
+Generate scaffolding for webhooks (both defaulting and validating)
+```sh
+kubebuilder create webhook --group batch --version v1 --kind CronJob --defaulting --programmatic-validation
+```
+
 ### Running on the cluster
 1. Install Instances of Custom Resources:
 
