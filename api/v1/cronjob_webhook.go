@@ -17,6 +17,9 @@ limitations under the License.
 package v1
 
 import (
+	"os"
+	"strconv"
+
 	cron "github.com/robfig/cron/v3"
 	apierrors "k8s.io/apimachinery/pkg/api/errors"
 	"k8s.io/apimachinery/pkg/runtime"
@@ -32,6 +35,13 @@ import (
 var cronjoblog = logf.Log.WithName("cronjob-resource")
 
 func (r *CronJob) SetupWebhookWithManager(mgr ctrl.Manager) error {
+	if value, exists := os.LookupEnv("ENABLE_WEBHOOKS"); exists {
+		if enable, err := strconv.ParseBool(value); (err == nil) && !enable {
+			cronjoblog.Info("Webhook not enabled")
+			return nil
+		}
+	}
+
 	return ctrl.NewWebhookManagedBy(mgr).
 		For(r).
 		Complete()

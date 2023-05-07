@@ -17,7 +17,7 @@ The `CronJob` resource was initialised using `kubebuilder` like so:
 kubebuilder create api --group batch --version v1 --kind CronJob
 ```
 
-Generate scaffolding for webhooks (both defaulting and validating)
+Scaffolding for webhooks (both defaulting and validating) generated like so:
 ```sh
 kubebuilder create webhook --group batch --version v1 --kind CronJob --defaulting --programmatic-validation
 ```
@@ -74,6 +74,7 @@ make install
 2. Run your controller (this will run in the foreground, so switch to a new terminal if you want to leave it running):
 
 ```sh
+export ENABLE_WEBHOOKS=false # optional, esp when running locally
 make run
 ```
 
